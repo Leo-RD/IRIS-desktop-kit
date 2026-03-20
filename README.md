@@ -33,8 +33,8 @@ iris-pi/
 
 
 
-⚙️ Prérequis
-Matériel :
+## ⚙️ Prérequis
+### Matériel :
 
 Raspberry Pi 5 (OS Bookworm)
 
@@ -44,7 +44,7 @@ Enceinte Bluetooth (ex: Bose)
 
 Caméra (Webcam USB ou flux IP/DroidCam)
 
-Dépendances Système :
+### Dépendances Système :
 
 Bash
 sudo apt update
@@ -77,7 +77,8 @@ uv venv --python 3.11 venv_vision
 source venv_vision/bin/activate
 uv pip install opencv-python mediapipe requests
 deactivate
-🎯 Utilisation
+
+## 🎯 Utilisation
 Pour lancer les deux modules simultanément en arrière-plan, exécutez le script principal :
 
 Bash
@@ -85,13 +86,13 @@ chmod +x start_iris.sh
 ./start_iris.sh
 Interactions possibles :
 
-Parler à l'IA : Dites "IRIS" (la console indique l'enregistrement), puis posez votre question. La réponse sera lue sur l'enceinte Bluetooth.
+### Parler à l'IA : Dites "IRIS" (la console indique l'enregistrement), puis posez votre question. La réponse sera lue sur l'enceinte Bluetooth.
 
-Valider une action : Faites un pouce en l'air (👍) face à la caméra.
+### Valider une action : Faites un pouce en l'air (👍) face à la caméra.
 
-Scanner un document : Placez le document, faites le signe de la victoire (✌️). L'image sera envoyée à l'API. (Alternative: Appuyez sur la touche P de la fenêtre vidéo).
+### Scanner un document : Placez le document, faites le signe de la victoire (✌️). L'image sera envoyée à l'API. (Alternative: Appuyez sur la touche P de la fenêtre vidéo).
 
-🔒 Sécurité
+## 🔒 Sécurité
 Le Raspberry Pi ne stocke aucune donnée sensible et aucun audio/image de manière permanente. Les fichiers temporaires sont supprimés post-traitement. Toute l'intelligence (LLM) est déportée sur le serveur Proxmox.
 
 Projet développé dans le cadre du Challenge IA,3ème édition.
