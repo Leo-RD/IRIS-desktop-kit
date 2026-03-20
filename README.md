@@ -29,3 +29,68 @@ iris-pi/
 ├── vision.py           # Service Vision (Caméra -> Geste/Scan)
 ├── iris.dict           # Dictionnaire phonétique pour le Wake Word
 └── start_iris.sh       # Script Bash de lancement simultané
+
+
+
+⚙️ Prérequis
+Matériel :
+
+Raspberry Pi 5 (OS Bookworm)
+
+Microphone USB (ex: UGREEN)
+
+Enceinte Bluetooth (ex: Bose)
+
+Caméra (Webcam USB ou flux IP/DroidCam)
+
+Dépendances Système :
+
+Bash
+sudo apt update
+sudo apt install sox libsox-fmt-all -y
+🚀 Installation
+Cloner le dépôt :
+
+Bash
+git clone [https://github.com/TON_NOM/iris-pi.git](https://github.com/TON_NOM/iris-pi.git)
+cd iris-pi
+Configuration de l'API :
+Dans wake_wordFULL.py et vision.py, remplacez les variables suivantes :
+
+Python
+API_URL = "[https://iris.qoyri.fr](https://iris.qoyri.fr)" # Sans le port pour le reverse proxy
+PI_KEY = "irpi_votre_cle_api_generee" # Clé API de l'utilisateur
+Environnement Audio (Python 3.13) :
+
+Bash
+python3 -m venv venv_iris
+source venv_iris/bin/activate
+pip install pyaudio requests pocketsphinx webrtc-noise-gain
+deactivate
+Environnement Vision (Python 3.11 via uv) :
+
+Bash
+curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
+source ~/.bashrc
+uv venv --python 3.11 venv_vision
+source venv_vision/bin/activate
+uv pip install opencv-python mediapipe requests
+deactivate
+🎯 Utilisation
+Pour lancer les deux modules simultanément en arrière-plan, exécutez le script principal :
+
+Bash
+chmod +x start_iris.sh
+./start_iris.sh
+Interactions possibles :
+
+Parler à l'IA : Dites "IRIS" (la console indique l'enregistrement), puis posez votre question. La réponse sera lue sur l'enceinte Bluetooth.
+
+Valider une action : Faites un pouce en l'air (👍) face à la caméra.
+
+Scanner un document : Placez le document, faites le signe de la victoire (✌️). L'image sera envoyée à l'API. (Alternative: Appuyez sur la touche P de la fenêtre vidéo).
+
+🔒 Sécurité
+Le Raspberry Pi ne stocke aucune donnée sensible et aucun audio/image de manière permanente. Les fichiers temporaires sont supprimés post-traitement. Toute l'intelligence (LLM) est déportée sur le serveur Proxmox.
+
+Projet développé dans le cadre du Challenge IA,3ème édition.
