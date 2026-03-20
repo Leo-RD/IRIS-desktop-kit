@@ -21,7 +21,7 @@ Le Raspberry Pi agit comme les yeux et les oreilles du système, gérant l'acqui
 
 Pour éviter les conflits de dépendances matérielles (notamment MediaPipe qui n'est pas encore compilé pour Python 3.13 sur architecture ARM64), le projet est divisé en **deux micro-services indépendants** qui communiquent en parallèle avec l'API HTTPS :
 
-```text
+
 iris-pi/
 ├── venv_iris/          # Python 3.13 (Audio / WebRTC / Sphinx)
 ├── venv_vision/        # Python 3.11 (Vision / OpenCV / MediaPipe via UV)
@@ -29,7 +29,7 @@ iris-pi/
 ├── vision.py           # Service Vision (Caméra -> Geste/Scan)
 ├── iris.dict           # Dictionnaire phonétique pour le Wake Word
 └── start_iris.sh       # Script Bash de lancement simultané
-```text
+
 
 
 
