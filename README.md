@@ -29,6 +29,7 @@ iris-pi/
 ├── vision.py           # Service Vision (Caméra -> Geste/Scan)
 ├── iris.dict           # Dictionnaire phonétique pour le Wake Word
 └── start_iris.sh       # Script Bash de lancement simultané
+```text
 
 
 
